@@ -29,6 +29,7 @@ if (USE_SYSTEM_ARCH MATCHES LINUX)
     add_definitions(-DSYSTEM_ARCH_LINUX)
     add_subdirectory(samples/sample_c/platform/linux/manifold2)
     add_subdirectory(samples/sample_c++/platform/linux/manifold2)
+    #add_subdirectory(samples/sample_c/platform/rtos_freertos/stm32f4_discovery/drivers)
     
     execute_process(COMMAND uname -m OUTPUT_VARIABLE DEVICE_SYSTEM_ID)
     if (DEVICE_SYSTEM_ID MATCHES x86_64)
@@ -39,13 +40,13 @@ if (USE_SYSTEM_ARCH MATCHES LINUX)
         message(FATAL_ERROR "FATAL: Please confirm your platform.")
     endif ()
 
-    install(FILES ${LIBRARY_PATH}/libpayloadsdk.a
-            DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-            )
+    # install(FILES ${LIBRARY_PATH}/libpayloadsdk.a
+            # DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+            # )
 
-    install(DIRECTORY psdk_lib/include
-            DESTINATION "${CMAKE_INSTALL_PREFIX}"
-            )
+    # install(DIRECTORY psdk_lib/include
+    #         DESTINATION "${CMAKE_INSTALL_PREFIX}"
+    #         )
 elseif (USE_SYSTEM_ARCH MATCHES RTOS)
     add_definitions(-DSYSTEM_ARCH_RTOS)
     add_subdirectory(samples/sample_c/platform/rtos_freertos/stm32f4_discovery/project/armgcc)

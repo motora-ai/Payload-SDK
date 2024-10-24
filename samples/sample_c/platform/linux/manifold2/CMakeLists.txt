@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(dji_sdk_demo_linux C)
+# project(dji_sdk_demo_linux C)
 
 set(CMAKE_C_FLAGS "-pthread -std=gnu99")
 set(CMAKE_CXX_FLAGS "-std=c++11 -pthread")
@@ -51,11 +51,11 @@ if (NOT EXECUTABLE_OUTPUT_PATH)
     set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 endif ()
 
-add_executable(${PROJECT_NAME}
-        ${MODULE_APP_SRC}
-        ${MODULE_SAMPLE_SRC}
-        ${MODULE_COMMON_SRC}
-        ${MODULE_HAL_SRC})
+# add_executable(${PROJECT_NAME}
+#         ${MODULE_APP_SRC}
+#         ${MODULE_SAMPLE_SRC}
+#         ${MODULE_COMMON_SRC}
+#         ${MODULE_HAL_SRC})
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../common/3rdparty)
 find_package(OPUS REQUIRED)
@@ -77,13 +77,13 @@ if (LIBUSB_FOUND)
     message(STATUS " - Libraries: ${LIBUSB_LIBRARY}")
 
     add_definitions(-DLIBUSB_INSTALLED)
-    target_link_libraries(${PROJECT_NAME} usb-1.0)
+    # target_link_libraries(${PROJECT_NAME} usb-1.0)
 else ()
     message(STATUS "Cannot Find LIBUSB")
 endif (LIBUSB_FOUND)
 
-target_link_libraries(${PROJECT_NAME} m)
+# target_link_libraries(${PROJECT_NAME} m)
 
-add_custom_command(TARGET ${PROJECT_NAME}
-        PRE_LINK COMMAND cmake ..
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+# add_custom_command(TARGET ${PROJECT_NAME}
+#         PRE_LINK COMMAND cmake ..
+#         WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
